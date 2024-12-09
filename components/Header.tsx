@@ -1,7 +1,13 @@
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+'use client'
+
+import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from "@clerk/nextjs";
 import Logo from "./Logo"
 
 const Header = () => {
+
+  const { isSignedIn , user } = useUser();
+
+
   return (
     <header className="w-full bg-[#111]">
       {/* Inner Header container - section */}
@@ -10,15 +16,8 @@ const Header = () => {
         <Logo />
 
         {/* Conditional State - Authentication Section */}
-        <>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+          {isSignedIn ? <UserButton /> : <SignInButton />}
 
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-        </>
       </div>
     </header>
   );
