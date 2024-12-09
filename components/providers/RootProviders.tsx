@@ -1,7 +1,7 @@
 'use client'
 
 
-const RootProviders = () => {
+const RootProviders = ({children} : {children: React.ReactNode}) => {
   return (
     <div>RootProviders</div>
   )
